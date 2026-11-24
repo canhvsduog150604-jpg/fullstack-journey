@@ -8,29 +8,98 @@
 <body>
   <header>
     <!-- TODO: tên của bạn (h1) -->
+    <h1>Nguyễn Hiệu Cảnh</h1>
     <!-- TODO: nav với 3 link: #gioi-thieu, #ky-nang, #lien-he -->
+    <nav>
+      <a rel="stylesheet" href="#gioi-thieu">Giới thiệu</a>
+      <a rel="stylesheet" href="#ky-nang">Kỹ năng</a>
+      <a rel="stylesheet" href="#lien-he">Liên hệ</a>
+    </nav>
   </header>
 
   <main>
     <section id="gioi-thieu">
       <!-- TODO: h2, đoạn giới thiệu, ảnh có alt -->
+      <h2>Tôi là Nguyễn Hiệu Cảnh, mọi người thường gọi tôi là Himmel. Tôi 22 tuổi. Hiện tại đang học IT và tôi muốn trở thành một kỹ sư phần mềm</h2>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT00VxqOmL0xOq58g9hsso18LWeDFFhYyKG19aWZaRsXJClpKC_A5I1ZCI&s=10" alt="Ảnh Trần Nghiễn Châu và Trịnh Vũ">
     </section>
 
     <section id="ky-nang">
       <!-- TODO: h2 và bảng 3 cột: Kỹ năng | Mức độ | Đang học ở trạm nào -->
+      <h2>Kỹ Năng</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Kỹ năng</th>
+            <th>Mức độ</th>
+            <th>Đang học ở trạm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HTML</td>
+            <td>Đã học cơ bản nhưng quên cách sử dụng display:flex, grid</td>
+            <td>Trạm 1</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>CSS</td>
+            <td>Đã có nền cơ bản</td>
+            <td>Trạm 1</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>JS</td>
+            <td>Biết một chút về biến, function, vòng lặp, rẽ nhánh</td>
+            <td>Trạm 1</td>
+          </tr>
+        </tbody>  
+        <tbody>
+          <tr>
+            <td>Python</td>
+            <td>Biết cơ bản, chưa học OPP và các thư viện, viết DSA hằng ngày bằng PY</td>
+            <td>Đã từng học từ trước</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section id="du-an">
       <!-- TODO: h2 và ol gồm 3 article (h3 + một câu mô tả) -->
+      <h2>Dự án</h2>
+      <ol>
+        <li>
+          <article>
+            <h3>Dự án: Trang profile cá nhân, rồi Todo app</h3>
+            <p>Xây dựng một trang web giới thiệu bản thân, kỹ năng và các dự án nổi bật bằng HTML và CSS thuần.</p>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Dự án: App thời tiết hoặc tìm GitHub user</h3>
+            <p>Xây dựng một trang web dự báo thời tiết hoặc tìm Github user</p>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Dự án: CLI quản lý chi tiêu</h3>
+            <p>Thêm, liệt kê, tổng theo tháng, lưu JSON. Sau đó refactor thành class Expense và ExpenseStore, có test.</p>
+          </article>
+        </li>
+      </ol>
     </section>
-
     <section id="lien-he">
       <!-- TODO: h2 và link GitHub -->
+      <h2>Liên hệ</h2>
+      <a rel="stylesheet" href="https://github.com/canhvsduog150604-jpg">My Github</a>
     </section>
   </main>
 
   <footer>
     <!-- TODO: dòng bản quyền -->
+    <strong>@ 2026 Nguyễn Hiệu Cảnh. Mọi quyền được bảo lưu</strong>
   </footer>
 </body>
 </html>

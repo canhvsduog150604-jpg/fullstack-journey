@@ -1,0 +1,1 @@
+1. alt quan trọng vì khi link ảnh bị lỗi không thể nhìn thấy thì nó sẽ thay bằng một mô tả về bức ảnh đó \n dùng section khi một phần có tiêu đề riêng còn div thì không thẻ tiêu đề \n không nên dùng thẻ h3 thay h2 để muốn chữ nhỏ hơn vì nó dùng sai mục đích. Có thể dùng CSS để làm chữ của h2 nhỏ đi
