@@ -1,1 +1,3 @@
-1. alt quan trọng vì khi link ảnh bị lỗi không thể nhìn thấy thì nó sẽ thay bằng một mô tả về bức ảnh đó \n dùng section khi một phần có tiêu đề riêng còn div thì không thẻ tiêu đề \n không nên dùng thẻ h3 thay h2 để muốn chữ nhỏ hơn vì nó dùng sai mục đích. Có thể dùng CSS để làm chữ của h2 nhỏ đi
+1. alt quan trọng vì lý do chính của alt là cho người khiếm thị: trình đọc màn hình đọc alt lên cho họ nghe. Ngoài ra, Google cũng dựa vào alt để hiểu ảnh. khi link ảnh bị lỗi không thể nhìn thấy thì nó sẽ thay bằng một mô tả về bức ảnh đó 
+2. dùng section khi một phần có tiêu đề riêng còn div thì không thẻ tiêu đề. div không mang ý nghĩa gì, chỉ dùng để gom phần tử lại cho dễ viết CSS hoặc dàn layout.
+3. không nên dùng thẻ h3 thay h2 để muốn chữ nhỏ hơn vì nó dùng sai mục đích. Có thể dùng CSS để làm chữ của h2 nhỏ đi
