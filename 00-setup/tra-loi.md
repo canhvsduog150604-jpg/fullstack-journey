@@ -1,22 +1,7 @@
-1. git add -  Đưa thay đổi vào file vào Staging chưa lưu các thay đổi, còn git-commit thì lưu lại các thay đổi trong Staging 
- 2.On branch main
-Your branch is up to date with 'origin/main'.
+# Trả lời câu hỏi Bài 0
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	tra-loi.md
-	../lenh-da-dung.txt
+1. `git add` đưa thay đổi vào staging, lúc này thay đổi **chưa được lưu** vào lịch sử. `git commit` mới lưu những gì đang nằm trong staging thành một commit.
 
-nothing added to commit but untracked files present (use "git add" to track) không lưu thay đổi 
- 3.commit file mật khẩu hoặc  dễ push nhầm lên git dẫn đến người khác có thể nhìn thấy mật khẩu
-1. git add -  Đưa thay đổi vào file vào Staging chưa lưu các thay đổi, còn git-commit thì lưu lại các thay đổi trong Staging 
- 2.On branch main
-Your branch is up to date with 'origin/main'.
+2. Không. `git commit` chỉ lưu những gì đã ở trong staging. File đã sửa mà chưa `git add` thì vẫn ở trạng thái *modified* và không có trong commit. (Mình kiểm chứng bằng `git status`: file chưa add hiện ở mục "Untracked files" hoặc "Changes not staged", và Git báo "nothing added to commit".)
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	tra-loi.md
-	../lenh-da-dung.txt
-
-nothing added to commit but untracked files present (use "git add" to track) không lưu thay đổi 
- 3.commit file mật khẩu hoặc .env dễ push nhầm lên git dẫn đến người khác có thể nhìn thấy mật khẩu
+3. Vì dễ push nhầm lên GitHub, người khác sẽ thấy được mật khẩu hoặc file `.env`. Xóa file ở commit sau cũng không cứu được vì nó vẫn nằm trong lịch sử Git, và có bot quét GitHub tìm key bị lộ chỉ trong vài phút. Cách phòng: ghi `.env` vào `.gitignore` ngay từ đầu.
