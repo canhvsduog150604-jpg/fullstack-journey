@@ -1,0 +1,16 @@
+pwd
+ls
+cd fullstack-journey
+cd 00-setup
+mkdir thuc-hanh
+cd thuc-hanh
+touch gioi-thieu.txt
+cd gioi-thieu.txt
+echo Nguyen Hieu Canh
+echo Toi muon hoc lap trinh vi toi muon lam ra  trang web tu van tam ly
+echo app tu van tam ly
+cat gioi-thieu.txt
+echo Nguyen Hieu Canh
+echo Toi muon hoc lap trinh vi toi muon lam ra mot trang web tu van tam ly
+cd ..
+touch lenh-da-dung.txt

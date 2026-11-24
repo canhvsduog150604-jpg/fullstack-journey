@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lộ trình Full-stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE everyday learning, calm and orderly, built to be ticked off daily
+   IDEA a metro map: the course is one line, each phase a station, DSA a parallel branch
+   PICTURE the full line drawn large; stations fill with colour as lessons get ticked
+   COLOUR white ground, black ink; red frontend, blue backend, amber ops, green DSA
+   TYPE Figtree 800 for titles and station names, Figtree for text
+   LAYOUT title and progress across the top, map full width under it; phases as rows below; vertical map on phones */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e1116);--ink:light-dark(#10131a,#eceef3);--mute:light-dark(#5b6170,#9aa1b2);--rule:light-dark(#e3e5ea,#252a35);--card:light-dark(#f6f7f9,#151a23);--red:#e6261f;--blue:light-dark(#0a5cff,#4d8bff);--amber:#ffb400;--green:#00a05a;--black:light-dark(#10131a,#eceef3)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Figtree,system-ui,sans-serif;overflow-x:clip}
+a{color:var(--blue)}
+.band{padding-block:clamp(28px,4vw,56px);padding-inline:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+.top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 48px;align-items:end;padding-bottom:12px}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.05;letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance;font-weight:800}
+.lede{margin:0;max-width:62ch;color:var(--mute);font-size:17px}
+.stats{display:flex;gap:28px;flex-wrap:wrap}
+.stat b{display:block;font-size:clamp(30px,4vw,44px);line-height:1;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stat span{color:var(--mute);font-size:14px}
+.mapbox{border-top:3px solid var(--ink);border-bottom:1px solid var(--rule);padding-top:8px}
+.fig{position:relative;height:390px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.fig svg text{paint-order:stroke;stroke:var(--bg);stroke-width:4px;font-family:Figtree,system-ui,sans-serif}
+.st{cursor:pointer}
+.st:focus{outline:none}
+.st:focus-visible circle.dot{stroke-width:6}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2s ease-out infinite}
+@keyframes pulse{from{opacity:.55;transform:scale(1)}to{opacity:0;transform:scale(2.2)}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none;opacity:.25}}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;padding:12px 0 4px;font-size:14px;color:var(--mute)}
+.legend i{display:inline-block;width:22px;height:6px;border-radius:3px;vertical-align:middle;margin-right:8px}
+h2{font-size:30px;line-height:1.1;letter-spacing:-.02em;margin:0 0 6px;font-weight:800}
+.sub{color:var(--mute);margin:0 0 24px;max-width:70ch}
+.phase{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px 40px;padding:28px 0;border-top:1px solid var(--rule)}
+.ph-head{display:flex;gap:14px;align-items:flex-start}
+.num{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:18px;color:#fff;background:var(--c)}
+.ph-head h3{margin:0;font-size:24px;line-height:1.15;font-weight:800}
+.wk{color:var(--mute);font-size:14px;white-space:nowrap}
+.goal{margin:12px 0 14px}
+.bar{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;margin:0 0 14px}
+.bar i{display:block;height:100%;background:var(--c);transition:width .3s}
+.res{margin:0;padding:0;list-style:none;font-size:15px}
+.res li{padding:3px 0}
+.res li::before{content:"↗";color:var(--mute);margin-right:8px}
+.list{margin:0;padding:0;list-style:none}
+.list label{display:flex;gap:12px;align-items:flex-start;padding:8px 10px;border-radius:8px;cursor:pointer;min-height:44px}
+.list label:hover{background:var(--card)}
+input[type=checkbox]{flex:none;appearance:none;width:22px;height:22px;margin:1px 0 0;border:2px solid var(--mute);border-radius:6px;display:grid;place-items:center;cursor:pointer;background:var(--bg)}
+input[type=checkbox]:checked{background:var(--c,var(--green));border-color:var(--c,var(--green))}
+input[type=checkbox]:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 3px 3px 0;transform:translateY(-1px) rotate(45deg)}
+input[type=checkbox]:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.done span{color:var(--mute);text-decoration:line-through}
+.proj{margin-top:10px;border:2px solid var(--c);border-radius:10px;padding:4px}
+.proj label{font-weight:700}
+.proj small{display:block;font-weight:400;color:var(--mute);font-size:14px;margin-top:2px}
+.dsa{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:2px 24px;--c:var(--green)}
+.dsa .wk{margin-left:auto;padding-left:10px}
+.how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.step{background:var(--card);border-radius:12px;padding:18px}
+.step b{display:block;font-size:18px;margin-bottom:6px}
+.step p{margin:0;font-size:15px;color:var(--mute)}
+code{font-size:.92em;background:var(--card);padding:1px 6px;border-radius:5px;overflow-wrap:anywhere}
+.foot{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;color:var(--mute);font-size:14px}
+button{font:inherit;font-size:15px;min-height:44px;padding:0 18px;border-radius:10px;border:2px solid var(--rule);background:var(--bg);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--ink)}
+button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+button.warn{border-color:var(--red);color:var(--red)}
+@media(max-width:900px){.how{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.phase{grid-template-columns:minmax(0,1fr)}.top{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:640px){.fig{height:620px}}
+@media(max-width:480px){.how{grid-template-columns:minmax(0,1fr)}.stats{gap:20px}}
+</style>
+</head>
+<body>
+<header class="band" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Lộ trình Full-stack trong 16 tuần</h1>
+        <p class="lede">Mười trạm từ HTML đến Docker. Học xong trạm nào làm dự án nhỏ ở trạm đó, rồi tất cả gom lại thành một Notes App có đăng nhập. Tuyến DSA chạy song song từ tuần 2.</p>
+      </div>
+      <div class="stats" aria-live="polite">
+        <div class="stat"><b id="pct">0%</b><span>hoàn thành</span></div>
+        <div class="stat"><b id="cnt">0/0</b><span>bài và dự án</span></div>
+        <div class="stat"><b id="cur" style="font-size:clamp(22px,3vw,30px)">Setup</b><span>trạm hiện tại</span></div>
+      </div>
+    </div>
+    <div class="mapbox">
+      <div class="fig"><svg id="map" role="img" aria-label="Bản đồ tuyến học: 10 trạm và tuyến DSA song song"></svg></div>
+      <div class="legend">
+        <span><i style="background:var(--black)"></i>Khởi đầu và tổng kết</span>
+        <span><i style="background:var(--red)"></i>Frontend</span>
+        <span><i style="background:var(--blue)"></i>Backend</span>
+        <span><i style="background:var(--amber)"></i>Vận hành</span>
+        <span><i style="background:var(--green)"></i>Tuyến DSA</span>
+        <span>Bấm vào một trạm để xem chi tiết</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="band">
+    <div class="wrap">
+      <h2>Các trạm</h2>
+      <p class="sub">Tick từng bài khi bạn đã làm xong bài tập, không phải khi mới đọc xong. Tiến độ được lưu trong trình duyệt này.</p>
+      <div id="phases"></div>
+    </div>
+  </section>
+
+  <section class="band" style="background:var(--card)">
+    <div class="wrap">
+      <h2>Tuyến DSA</h2>
+      <p class="sub">2–3 bài mỗi tuần, mỗi lần 30–45 phút. Giải bằng JavaScript đến tuần 5, sang Python từ tuần 6. Bắt đầu với bài Easy trên LeetCode, chỉ xem lời giải sau 30 phút tự nghĩ.</p>
+      <ul class="list dsa" id="dsa"></ul>
+      <ul class="res" style="margin-top:16px;display:flex;flex-wrap:wrap;gap:4px 24px">
+        <li><a href="https://neetcode.io/roadmap">NeetCode Roadmap</a></li>
+        <li><a href="https://leetcode.com/problemset/">LeetCode</a></li>
+        <li><a href="https://visualgo.net/en">VisuAlgo: xem thuật toán chạy</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Cách mình hướng dẫn bạn</h2>
+      <p class="sub">Mọi bài nằm trong thư mục <code>C:\Users\ADMIN\fullstack-journey</code>, mỗi trạm một thư mục con.</p>
+      <div class="how">
+        <div class="step"><b>1. Nhận bài</b><p>Nói “bài tiếp theo”. Mình tạo file bài học: lý thuyết ngắn, ví dụ, bài tập và file khởi đầu.</p></div>
+        <div class="step"><b>2. Tự code</b><p>Tự làm trước. Bí quá 30 phút thì hỏi mình gợi ý, mình sẽ không đưa ngay đáp án.</p></div>
+        <div class="step"><b>3. Chấm bài</b><p>Nói “chấm bài”. Mình đọc code, chạy thử, chỉ ra lỗi và cách viết gọn hơn.</p></div>
+        <div class="step"><b>4. Commit</b><p>Bài đạt thì <code>git commit</code> và push, tick ô trên trang này, sang bài kế.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="band" style="padding-top:0">
+    <div class="wrap foot">
+      <button id="reset" type="button">Xóa tiến độ</button>
+      <span id="note">Tiến độ chỉ lưu trên trình duyệt này.</span>
+    </div>
+  </footer>
+</main>
+
+<script>
+{
+const P=[
+ {s:"Setup",n:"Chuẩn bị môi trường",w:"Tuần 0",c:"--black",g:"Máy bạn đã có Git 2.56, Node 24, Python 3.14 và VS Code. Còn lại là làm quen terminal và đưa repo đầu tiên lên GitHub.",
+  l:["Terminal cơ bản: cd, ls, mkdir, đường dẫn tương đối và tuyệt đối","VS Code: mở thư mục, extension Live Server, Python, Prettier","Cấu hình Git: user.name, user.email, nhánh mặc định main","Tạo tài khoản GitHub, kết nối bằng SSH key","git init, add, commit, push: vòng đời một thay đổi"],
+  p:["Repo fullstack-journey trên GitHub","Mọi bài tập từ nay đều commit vào đây."],
+  r:[["Pro Git (tiếng Việt)","https://git-scm.com/book/vi/v2"],["GitHub Docs: SSH","https://docs.github.com/en/authentication/connecting-to-github-with-ssh"]]},
+ {s:"HTML/CSS/JS",n:"HTML, CSS, JavaScript và Git",w:"Tuần 1–4",c:"--red",g:"Dựng được trang web responsive và làm nó tương tác bằng JavaScript. Từ trạm này mỗi tính năng là một branch.",
+  l:["HTML: cấu trúc trang, thẻ ngữ nghĩa, link, ảnh, list, table","HTML form: input, label, button, validation có sẵn","CSS: selector, box model, màu, font, đơn vị","Flexbox","Grid và responsive với media query","JS: biến, kiểu dữ liệu, toán tử, if, vòng lặp","JS: hàm, arrow function, scope","JS: mảng, object, map, filter, reduce","DOM: chọn, tạo, sửa phần tử và bắt sự kiện","localStorage với JSON.stringify và JSON.parse","Git: branch, merge, xử lý conflict, Pull Request"],
+  p:["Trang profile cá nhân, rồi Todo app","Todo: thêm, sửa, xóa, lọc, lưu localStorage. Mỗi tính năng một branch và một PR."],
+  r:[["MDN: Learn web development","https://developer.mozilla.org/en-US/docs/Learn_web_development"],["javascript.info","https://javascript.info/"],["Flexbox Froggy","https://flexboxfroggy.com/"],["Grid Garden","https://cssgridgarden.com/"],["Learn Git Branching","https://learngitbranching.js.org/"]]},
+ {s:"HTTP + fetch",n:"HTTP cơ bản và fetch()",w:"Tuần 5",c:"--red",g:"Hiểu trình duyệt và server nói chuyện với nhau ra sao, rồi lấy dữ liệu thật từ một API có sẵn.",
+  l:["Client và server, URL, request và response","Method GET, POST, PUT, PATCH, DELETE và status code","Header, JSON body, đọc tab Network trong DevTools","Promise, async/await, try/catch","fetch(): GET, POST, trạng thái đang tải và lỗi","CORS là gì và vì sao request bị chặn"],
+  p:["App thời tiết hoặc tìm GitHub user","Dùng Open-Meteo hoặc GitHub API, không cần key. Có ô tìm kiếm, loading và báo lỗi."],
+  r:[["MDN: Tổng quan HTTP","https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"],["MDN: Using Fetch","https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"],["Open-Meteo API","https://open-meteo.com/en/docs"]]},
+ {s:"Python + OOP",n:"Python, rồi lập trình hướng đối tượng",w:"Tuần 6–7",c:"--blue",g:"Viết chương trình Python gọn gàng, tổ chức code bằng class. Đây là nền cho FastAPI.",
+  l:["Cú pháp, kiểu dữ liệu, f-string, input và print","list, tuple, dict, set, comprehension","Hàm, *args và **kwargs, module, import","Đọc ghi file, json, xử lý exception","venv, pip, requirements.txt","class, __init__, method, thuộc tính","Kế thừa, override, __str__ và __repr__","dataclass và type hints","pytest: viết test đầu tiên"],
+  p:["CLI quản lý chi tiêu","Thêm, liệt kê, tổng theo tháng, lưu JSON. Sau đó refactor thành class Expense và ExpenseStore, có test."],
+  r:[["Python Tutorial chính thức","https://docs.python.org/3/tutorial/"],["Real Python","https://realpython.com/"],["Python Tutor: xem code chạy","https://pythontutor.com/"]]},
+ {s:"SQL",n:"SQL và database",w:"Tuần 8–9",c:"--blue",g:"Thiết kế bảng hợp lý và truy vấn dữ liệu thành thạo, từ SQLite lên PostgreSQL.",
+  l:["Bảng, hàng, cột, kiểu dữ liệu","SELECT, WHERE, ORDER BY, LIMIT","INSERT, UPDATE, DELETE","Khóa chính, khóa ngoại, quan hệ 1-n và n-n","JOIN: INNER và LEFT","GROUP BY, HAVING, hàm tổng hợp","Index và transaction","sqlite3 trong Python, chống SQL injection bằng tham số","PostgreSQL và SQLAlchemy ORM"],
+  p:["Đưa CLI chi tiêu lên SQLite","Thêm bảng categories, báo cáo chi theo danh mục bằng JOIN và GROUP BY."],
+  r:[["SQLBolt: bài tập tương tác","https://sqlbolt.com/"],["PostgreSQL Exercises","https://pgexercises.com/"],["SQLAlchemy 2.0 Tutorial","https://docs.sqlalchemy.org/en/20/tutorial/"]]},
+ {s:"FastAPI",n:"FastAPI: CRUD, rồi xác thực JWT",w:"Tuần 10–11",c:"--blue",g:"Tự viết backend thật: API có database, đăng ký, đăng nhập và phân quyền.",
+  l:["REST là gì, cài FastAPI và uvicorn, route đầu tiên","Path param, query param, Pydantic model","CRUD notes lưu trong bộ nhớ","Nối database bằng SQLAlchemy, dependency injection","Trang /docs, status code đúng, HTTPException","Hash mật khẩu bằng bcrypt","Đăng ký, đăng nhập và phát JWT","Route bảo vệ: mỗi người chỉ thấy note của mình","Test API bằng pytest và TestClient"],
+  p:["Notes API có đăng nhập","CRUD notes, users, JWT. Có test chứng minh user A không đọc được note của user B."],
+  r:[["FastAPI Tutorial","https://fastapi.tiangolo.com/tutorial/"],["FastAPI: Security","https://fastapi.tiangolo.com/tutorial/security/"],["jwt.io: giải mã token","https://jwt.io/"]]},
+ {s:"Nối FE–BE",n:"Nối frontend với backend của bạn",w:"Tuần 12",c:"--red",g:"Frontend từ trạm 1 gọi API bạn tự viết ở trạm 5. Đây là lúc mọi thứ ghép lại.",
+  l:["Bật CORS trong FastAPI","Form đăng ký và đăng nhập gọi API","Lưu token, gửi header Authorization: Bearer","Giao diện danh sách, thêm, sửa, xóa note","Xử lý 401: token hết hạn thì về trang đăng nhập"],
+  p:["Notes App hoàn chỉnh chạy trên máy","Đăng ký, đăng nhập, quản lý note, đăng xuất."],
+  r:[["MDN: Authorization header","https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization"],["FastAPI: CORS","https://fastapi.tiangolo.com/tutorial/cors/"]]},
+ {s:"Deploy",n:"Deploy lên internet",w:"Tuần 13",c:"--amber",g:"Đưa Notes App ra ngoài để ai cũng mở được, không lộ bí mật.",
+  l:["Biến môi trường, file .env, không commit secret","PostgreSQL trên cloud (Neon hoặc Render)","Deploy backend lên Render hoặc Railway","Deploy frontend lên Netlify, Vercel hoặc GitHub Pages","Cập nhật CORS và URL API cho bản production"],
+  p:["Notes App có link công khai","Gửi link cho một người bạn, nhờ họ đăng ký và dùng thử."],
+  r:[["Render Docs","https://render.com/docs"],["Netlify Docs","https://docs.netlify.com/"],["Neon Docs","https://neon.tech/docs"]]},
+ {s:"Docker",n:"Docker",w:"Tuần 14",c:"--amber",g:"Đóng gói app để chạy giống nhau trên mọi máy. Cần cài Docker Desktop trước buổi này.",
+  l:["Image và container, docker run, ps, logs","Viết Dockerfile cho FastAPI","dockerignore và layer cache","docker compose: API, PostgreSQL và volume","Deploy bằng image"],
+  p:["Docker hóa Notes App","Một lệnh docker compose up là chạy được cả API lẫn database."],
+  r:[["Docker: Get started","https://docs.docker.com/get-started/"],["FastAPI in Containers","https://fastapi.tiangolo.com/deployment/docker/"]]},
+ {s:"Tổng kết",n:"Hoàn thiện và portfolio",w:"Tuần 15–16",c:"--black",g:"Biến bài tập thành sản phẩm đưa vào CV, rồi tự làm một dự án từ đầu.",
+  l:["Refactor, viết README có ảnh chụp và link demo","Thêm tính năng: tìm kiếm, tag, phân trang","GitHub Actions chạy test tự động mỗi lần push","Lên ý tưởng và thiết kế dự án tự chọn"],
+  p:["Dự án tự chọn","Tự thiết kế database, API và giao diện. Mình chỉ review."],
+  r:[["GitHub Actions: Python","https://docs.github.com/en/actions/use-cases-and-examples/building-and-testing/building-and-testing-python"]]}
+];
+const D=[["Big-O: đo độ phức tạp thời gian và bộ nhớ","Tuần 2"],["Mảng và chuỗi","Tuần 3"],["Hash map và set","Tuần 4"],["Two pointers","Tuần 5"],["Sliding window","Tuần 6"],["Stack và queue","Tuần 7"],["Đệ quy","Tuần 8"],["Sắp xếp và binary search","Tuần 9–10"],["Linked list","Tuần 11"],["Cây nhị phân","Tuần 12–13"],["BFS và DFS trên đồ thị","Tuần 14–15"]];
+
+const KEY="fs-roadmap-v1";
+let S={};
+try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){S={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){document.getElementById("note").textContent="Trình duyệt chặn lưu trữ, tiến độ sẽ mất khi tải lại."}};
+const ids=(p,i)=>[...p.l.map((_,j)=>`p${i}-${j}`),`p${i}-proj`];
+const frac=i=>{const a=ids(P[i],i);return a.filter(k=>S[k]).length/a.length};
+const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+const box=(k,txt,extra="")=>`<label class="${S[k]?"done":""}"><input type="checkbox" id="${k}" ${S[k]?"checked":""}><span>${txt}${extra}</span></label>`;
+
+document.getElementById("phases").innerHTML=P.map((p,i)=>`
+<article class="phase" id="tram-${i}" style="--c:var(${p.c})">
+  <div>
+    <div class="ph-head"><div class="num" ${p.c==="--black"?'style="color:var(--bg)"':""}>${i}</div><div><h3>${p.n}</h3><span class="wk">${p.w} · ${p.l.length} bài</span></div></div>
+    <p class="goal">${p.g}</p>
+    <div class="bar"><i id="bar${i}" style="width:0"></i></div>
+    <ul class="res">${p.r.map(r=>`<li><a href="${r[1]}">${r[0]}</a></li>`).join("")}</ul>
+  </div>
+  <div>
+    <ul class="list">${p.l.map((t,j)=>`<li>${box(`p${i}-${j}`,t)}</li>`).join("")}</ul>
+    <div class="proj list">${box(`p${i}-proj`,"Dự án: "+p.p[0],`<small>${p.p[1]}</small>`)}</div>
+  </div>
+</article>`).join("");
+
+document.getElementById("dsa").innerHTML=D.map((d,i)=>`<li>${box(`d${i}`,d[0],"")}</li>`).join("");
+document.querySelectorAll("#dsa label").forEach((l,i)=>{const s=document.createElement("span");s.className="wk";s.textContent=D[i][1];l.appendChild(s)});
+
+const s=document.getElementById("map");
+const draw=()=>{
+  const W=s.clientWidth,H=s.clientHeight,n=P.length;
+  const f=P.map((_,i)=>frac(i));
+  let cur=f.findIndex(v=>v<1);
+  const dd=D.map((_,i)=>!!S[`d${i}`]);
+  const vert=W<640;
+  let pts,dl,out="";
+  if(!vert){
+    const m=64,y=H*.42,st=(W-2*m)/(n-1);
+    pts=P.map((_,i)=>[m+i*st,y]);
+    const dy=y+130,x1=pts[1][0],x2=pts[9][0];
+    dl=D.map((_,i)=>[x1+(x2-x1)*i/(D.length-1),dy]);
+    out+=`<line x1="${x1}" y1="${y}" x2="${x1}" y2="${dy}" stroke="var(--mute)" stroke-width="2" stroke-dasharray="4 5"/>`;
+    out+=`<text x="${x1-18}" y="${dy+34}" font-size="14" font-weight="700" fill="var(--green)">Tuyến DSA</text><text x="${x1+62}" y="${dy+34}" font-size="14" fill="var(--mute)">· 2–3 bài mỗi tuần, chạy song song</text>`;
+  }else{
+    const x=70,t=34,st=(H-2*t)/(n-1);
+    pts=P.map((_,i)=>[x,t+i*st]);
+    const y1=pts[1][1],y2=pts[9][1];
+    dl=D.map((_,i)=>[26,y1+(y2-y1)*i/(D.length-1)]);
+  }
+  out+=`<polyline points="${dl.map(p=>p.join(",")).join(" ")}" fill="none" stroke="var(--green)" stroke-width="5" stroke-linecap="round"/>`;
+  out+=dl.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="${dd[i]?"var(--green)":"var(--bg)"}" stroke="var(--green)" stroke-width="3"><title>${D[i][0]}</title></circle>`).join("");
+  for(let i=1;i<n;i++)out+=`<line x1="${pts[i-1][0]}" y1="${pts[i-1][1]}" x2="${pts[i][0]}" y2="${pts[i][1]}" stroke="var(${P[i].c})" stroke-width="11" stroke-linecap="round"/>`;
+  out+=P.map((p,i)=>{
+    const [x,y]=pts[i],done=f[i]===1,now=i===cur,r=now?17:14,c=`var(${p.c})`;
+    const numFill=done?(p.c==="--black"?"var(--bg)":"#fff"):"var(--ink)";
+    let lab;
+    if(!vert){
+      const up=i%2===0,anc=i===0?"start":i===n-1?"end":"middle",lx=i===0?x-14:i===n-1?x+14:x;
+      const ny=up?y-50:y+46,wy=up?y-31:y+65;
+      lab=`<text x="${lx}" y="${ny}" text-anchor="${anc}" font-size="15" font-weight="800" fill="var(--ink)">${p.s}</text><text x="${lx}" y="${wy}" text-anchor="${anc}" font-size="13" fill="var(--mute)">${p.w}${f[i]>0&&!done?" · "+Math.round(f[i]*100)+"%":""}</text>`;
+    }else{
+      lab=`<text x="${x+30}" y="${y-2}" font-size="15" font-weight="800" fill="var(--ink)">${p.s}</text><text x="${x+30}" y="${y+16}" font-size="13" fill="var(--mute)">${p.w}${f[i]>0&&!done?" · "+Math.round(f[i]*100)+"%":""}</text>`;
+    }
+    return `<g class="st" data-i="${i}" tabindex="0" role="link" aria-label="Trạm ${i}: ${p.n}">${now?`<circle class="pulse" cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`:""}<circle class="dot" cx="${x}" cy="${y}" r="${r}" fill="${done?c:"var(--bg)"}" stroke="${c}" stroke-width="4"/><text x="${x}" y="${y+5}" text-anchor="middle" font-size="14" font-weight="800" fill="${numFill}" style="stroke:none">${i}</text>${lab}</g>`;
+  }).join("");
+  if(vert)out+=`<text x="12" y="${pts[1][1]-14}" font-size="13" font-weight="700" fill="var(--green)">DSA</text>`;
+  s.innerHTML=out;
+};
+const ro=new ResizeObserver(draw);ro.observe(s);
+
+const stats=()=>{
+  const all=[...P.flatMap((p,i)=>ids(p,i)),...D.map((_,i)=>`d${i}`)];
+  const d=all.filter(k=>S[k]).length;
+  document.getElementById("pct").textContent=Math.round(d/all.length*100)+"%";
+  document.getElementById("cnt").textContent=`${d}/${all.length}`;
+  const c=P.findIndex((_,i)=>frac(i)<1);
+  document.getElementById("cur").textContent=c<0?"Về đích":P[c].s;
+  P.forEach((_,i)=>{document.getElementById("bar"+i).style.width=frac(i)*100+"%"});
+  draw();
+};
+
+document.addEventListener("change",e=>{
+  const t=e.target;if(t.type!=="checkbox")return;
+  if(t.checked)S[t.id]=1;else delete S[t.id];
+  t.closest("label").classList.toggle("done",t.checked);
+  save();stats();
+});
+const go=e=>{const g=e.target.closest(".st");if(g)document.getElementById("tram-"+g.dataset.i).scrollIntoView({behavior:"smooth"})};
+s.addEventListener("click",go);
+s.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go(e)}});
+
+const rb=document.getElementById("reset");let arm=0;
+rb.addEventListener("click",()=>{
+  if(!arm){arm=1;rb.textContent="Bấm lần nữa để xóa hết";rb.classList.add("warn");setTimeout(()=>{arm=0;rb.textContent="Xóa tiến độ";rb.classList.remove("warn")},4000);return}
+  S={};save();document.querySelectorAll("input[type=checkbox]").forEach(c=>{c.checked=false;c.closest("label").classList.remove("done")});
+  arm=0;rb.textContent="Xóa tiến độ";rb.classList.remove("warn");stats();
+});
+stats();
+}
+</script>
+</body>
+</html>
