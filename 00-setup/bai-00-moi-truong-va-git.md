@@ -58,7 +58,7 @@ ssh-keygen -t ed25519 -C "laptop-cua-toi"     # Enter 3 lần là được
 cat ~/.ssh/id_ed25519.pub                      # copy dòng này
 ```
 
-Vào GitHub → **Settings → SSH and GPG keys → New SSH key** → dán vào. Kiểm tra:
+Vào GitHub → bấm **ảnh đại diện** góc trên phải → **Settings** (của tài khoản, không phải tab Settings của repo) → thanh trái, nhóm *Access* → **SSH and GPG keys → New SSH key** → dán cả dòng `ssh-ed25519 ...` vào. Link thẳng: https://github.com/settings/keys. Kiểm tra (lần đầu gõ `yes`):
 
 ```bash
 ssh -T git@github.com
