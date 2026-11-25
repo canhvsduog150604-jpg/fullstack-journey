@@ -7,7 +7,7 @@
 Khi nào dùng padding?
 
 - Làm nút bấm (button) hoặc thẻ (card) trông đầy đặn, dễ đọc và dễ bấm hơn.
-- Giữ chữ hoặc nội dung bên trong không bị dính sát vào viền
+- Giữ chữ hoặc nội dung bên trong không bị dính sát vào viền.
 
 Khi nào dùng margin?
 
