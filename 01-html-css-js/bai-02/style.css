@@ -1,0 +1,101 @@
+/* Bài 2: CSS cơ bản cho trang profile */
+
+/* BT1. Nền tảng */
+/* TODO: box-sizing: border-box cho mọi phần tử */
+/* TODO: body: font chữ, line-height, max-width, căn giữa, padding */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8px 16px;
+    background-color: var(--mau-nen);
+    color: var(--mau-chu);
+}
+
+
+/* BT2. Màu */
+/* TODO: :root với ít nhất 3 biến màu: nền, chữ, màu nhấn */
+:root {
+    --mau-nen: #ffffff;
+    --mau-chu: #222222;
+    --mau-nhan: #c66f7c;
+    --mau-galaxy: #00076f;
+    --mau-hover: #fbaeb9;
+}
+
+a {
+    color: var(--mau-nhan);
+}
+
+header {
+    border-bottom: 2px solid var(--mau-nhan);
+    margin-bottom: 8px;
+}
+
+/* BT3. Box model */
+/* TODO: section: padding, border, border-radius, margin-bottom */
+/* TODO: img: không tràn khung */
+/* TODO: bảng: border-collapse, viền và padding cho th/td, nền cho th */
+section {
+    border: 2px solid var(--mau-chu);
+    padding: 8px 16px 16px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid var(--mau-chu);
+    padding: 4px;
+}
+
+th {
+    background-color: var(--mau-galaxy);
+    color: var(--mau-nen);
+}
+
+/* BT4. Thanh điều hướng */
+/* TODO: link trong nav: inline-block, padding, bỏ gạch chân */
+/* TODO: :hover đổi màu */
+nav a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px;
+}
+
+nav a:first-child {
+    padding-left: 0;
+}
+
+nav a:hover {
+    color: var(--mau-hover);
+}
+
+
+/* BT5. Class */
+/* TODO: style cho .muted và .tag */
+.muted {
+    font-size: .66rem;
+    opacity: .8;
+}
+
+.tag {
+    background-color: var(--mau-nhan);
+    padding: 2px;
+    border-radius: 4px;
+}
