@@ -50,7 +50,7 @@ section {
 }
 
 img {
-    max-width: 100%;
+    max-width: 300px;
     height: auto;
 }
 
@@ -83,7 +83,8 @@ nav a:first-child {
 }
 
 nav a:hover {
-    color: var(--mau-hover);
+    background-color: var(--mau-hover);
+    color: var(--mau-chu)
 }
 
 
@@ -96,6 +97,6 @@ nav a:hover {
 
 .tag {
     background-color: var(--mau-nhan);
-    padding: 2px;
+    padding: 2px 8px;
     border-radius: 4px;
 }
