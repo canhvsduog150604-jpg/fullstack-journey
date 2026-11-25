@@ -50,7 +50,8 @@ section {
 }
 
 img {
-    max-width: 300px;
+    width: 300px;
+    max-width: 100%;
     height: auto;
 }
 
@@ -84,14 +85,14 @@ nav a:first-child {
 
 nav a:hover {
     background-color: var(--mau-hover);
-    color: var(--mau-chu)
+    color: var(--mau-chu);
 }
 
 
 /* BT5. Class */
 /* TODO: style cho .muted và .tag */
 .muted {
-    font-size: .66rem;
+    font-size: .875rem;
     opacity: .8;
 }
 
