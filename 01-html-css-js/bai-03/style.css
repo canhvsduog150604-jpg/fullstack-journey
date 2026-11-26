@@ -28,8 +28,12 @@ a {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 2px solid var(--mau-nhan);
     margin-bottom: 8px;
+    flex-wrap: wrap;
 }
 
 section {
@@ -60,15 +64,16 @@ th {
     color: var(--mau-nen);
 }
 
+nav {
+    display: flex;
+    gap: 16px;
+}
+
 nav a {
     text-decoration: none;
     display: inline-block;
-    padding: 8px;
 }
 
-nav a:first-child {
-    padding-left: 0;
-}
 
 nav a:hover {
     background-color: var(--mau-hover);
