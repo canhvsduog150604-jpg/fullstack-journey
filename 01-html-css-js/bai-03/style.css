@@ -118,3 +118,22 @@ nav a:hover {
 }
 
 /* BT4. Dự án: 3 thẻ nằm ngang, tự xuống hàng khi hẹp */
+.du-an-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    list-style: none;
+    padding: 0px;
+}
+
+.du-an-list > li {
+    flex: 1 1 180px;
+}
+
+.du-an-list article {
+    height: 100%;
+}
+
+.du-an-list h3 {
+    margin-top: 0;
+}
