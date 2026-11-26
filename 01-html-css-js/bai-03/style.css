@@ -101,6 +101,20 @@ nav a:hover {
 
 
 /* BT3. Giới thiệu: chữ bên trái, ảnh bên phải */
+.intro {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
 
+.intro p {
+    flex: 1 1 250px;
+}
+
+.intro img {
+    width: 200px;
+    flex: none;
+}
 
 /* BT4. Dự án: 3 thẻ nằm ngang, tự xuống hàng khi hẹp */
