@@ -71,7 +71,7 @@ nav {
 
 nav a {
     text-decoration: none;
-    display: inline-block;
+    padding: 4px 8px;
 }
 
 
@@ -93,12 +93,6 @@ nav a:hover {
 
 
 /* ===== Bài 3: Flexbox ===== */
-
-/* BT1. Header: tên bên trái, menu bên phải */
-
-
-/* BT2. Nav: 3 link xếp hàng, cách đều */
-
 
 /* BT3. Giới thiệu: chữ bên trái, ảnh bên phải */
 .intro {
@@ -132,8 +126,12 @@ nav a:hover {
 
 .du-an-list article {
     height: 100%;
+    border: 1px solid var(--mau-chu);
+    border-radius: 4px;
+    padding: 12px;
 }
 
 .du-an-list h3 {
     margin-top: 0;
+    font-size: 1rem;
 }
