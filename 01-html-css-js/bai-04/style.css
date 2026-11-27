@@ -106,15 +106,11 @@ nav a:hover {
 }
 
 .du-an-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 16px;
     list-style: none;
     padding: 0px;
-}
-
-.du-an-list > li {
-    flex: 1 1 180px;
 }
 
 .du-an-list article {
