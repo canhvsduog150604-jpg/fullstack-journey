@@ -15,6 +15,10 @@ body {
     color: var(--mau-chu);
 }
 
+h1 {
+    font-size: 1.5rem;
+}
+
 :root {
     --mau-nen: #ffffff;
     --mau-chu: #222222;
@@ -29,8 +33,9 @@ a {
 
 header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     border-bottom: 2px solid var(--mau-nhan);
     margin-bottom: 8px;
     flex-wrap: wrap;
@@ -131,9 +136,10 @@ nav a:hover {
 main {
     display: grid;
     grid-template-areas:
-        "gioi-thieu lien-he"
-        "ky-nang ky-nang"
-        "du-an du-an";
+        "gioi-thieu"
+        "ky-nang"
+        "du-an"
+        "lien-he";
     gap: 16px;
 }
 
@@ -153,7 +159,24 @@ main {
     grid-area: lien-he;
 }
 
-/* BT2. Dự án: đổi từ Flexbox sang Grid */
-
 
 /* BT3. Media query */
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    header {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    main {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "gioi-thieu lien-he"
+            "ky-nang ky-nang"
+            "du-an du-an";
+    }
+}
