@@ -1,0 +1,141 @@
+/* Phần từ Bài 2 và Bài 3 */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 8px 16px;
+    background-color: var(--mau-nen);
+    color: var(--mau-chu);
+}
+
+:root {
+    --mau-nen: #ffffff;
+    --mau-chu: #222222;
+    --mau-nhan: #c66f7c;
+    --mau-galaxy: #00076f;
+    --mau-hover: #fbaeb9;
+}
+
+a {
+    color: var(--mau-nhan);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--mau-nhan);
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+section {
+    border: 2px solid var(--mau-chu);
+    padding: 8px 16px 16px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+img {
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid var(--mau-chu);
+    padding: 4px;
+}
+
+th {
+    background-color: var(--mau-galaxy);
+    color: var(--mau-nen);
+}
+
+nav {
+    display: flex;
+    gap: 16px;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 4px 8px;
+}
+
+nav a:hover {
+    background-color: var(--mau-hover);
+    color: var(--mau-chu);
+}
+
+.muted {
+    font-size: .875rem;
+    opacity: .8;
+}
+
+.tag {
+    background-color: var(--mau-nhan);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.intro {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.intro p {
+    flex: 1 1 250px;
+}
+
+.intro img {
+    width: 200px;
+    flex: none;
+}
+
+.du-an-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    list-style: none;
+    padding: 0px;
+}
+
+.du-an-list > li {
+    flex: 1 1 180px;
+}
+
+.du-an-list article {
+    height: 100%;
+    border: 1px solid var(--mau-chu);
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.du-an-list h3 {
+    margin-top: 0;
+    font-size: 1rem;
+}
+
+/* ===== Bài 4: Grid và responsive ===== */
+
+/* BT1. Bố cục trang bằng Grid */
+
+
+/* BT2. Dự án: đổi từ Flexbox sang Grid */
+
+
+/* BT3. Media query */
