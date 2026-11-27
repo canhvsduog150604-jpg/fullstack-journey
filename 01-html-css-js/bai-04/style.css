@@ -8,7 +8,7 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    max-width: 720px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 8px 16px;
     background-color: var(--mau-nen);
@@ -40,7 +40,6 @@ section {
     border: 2px solid var(--mau-chu);
     padding: 8px 16px 16px;
     border-radius: 4px;
-    margin-bottom: 8px;
 }
 
 img {
@@ -133,7 +132,30 @@ nav a:hover {
 /* ===== Bài 4: Grid và responsive ===== */
 
 /* BT1. Bố cục trang bằng Grid */
+main {
+    display: grid;
+    grid-template-areas:
+        "gioi-thieu lien-he"
+        "ky-nang ky-nang"
+        "du-an du-an";
+    gap: 16px;
+}
 
+.khu-gioi-thieu {
+    grid-area: gioi-thieu;
+}
+
+.khu-ky-nang {
+    grid-area: ky-nang;
+}
+
+.khu-du-an {
+    grid-area: du-an;
+}
+
+.khu-lien-he {
+    grid-area: lien-he;
+}
 
 /* BT2. Dự án: đổi từ Flexbox sang Grid */
 
