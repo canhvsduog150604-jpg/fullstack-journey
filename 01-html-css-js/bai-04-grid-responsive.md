@@ -170,13 +170,16 @@ Mỗi bài tập kiểm tra ở **hai cỡ**: 375px (điện thoại) và 1024px
 |---|---|---|
 | `body` (rule có sẵn) | Đổi `max-width` từ `720px` thành `960px` | Trang rộng hơn trên máy tính, đủ chỗ cho 2 cột |
 | `main` | `display: grid`, `gap: 16px` | Chưa đổi gì nhiều: vẫn 1 cột, các section cách nhau |
+| `main` | `grid-template-areas` gồm 4 chuỗi, mỗi chuỗi 1 tên: `"gioi-thieu" "ky-nang" "du-an" "lien-he"` (viết mỗi chuỗi một dòng) | Chưa thấy khác: vẫn 1 cột. Đây là bố cục cho điện thoại |
 | `section` (rule có sẵn) | **Xóa** `margin-bottom` | Khoảng cách giữa các section giờ do `gap` lo. Giữ cả hai thì khoảng cách bị cộng dồn |
-| `.khu-gioi-thieu` | `grid-area: gioi-thieu` | Chưa thấy gì, vì chưa có `grid-template-areas` |
+| `.khu-gioi-thieu` | `grid-area: gioi-thieu` | Section nằm đúng vùng tên của nó |
 | `.khu-ky-nang` | `grid-area: ky-nang` | Như trên |
 | `.khu-du-an` | `grid-area: du-an` | Như trên |
 | `.khu-lien-he` | `grid-area: lien-he` | Như trên |
 
-Phần `grid-template-columns` và `grid-template-areas` cho máy tính viết ở BT3, trong media query.
+**Phải khai báo `grid-template-areas` trước khi dùng `grid-area`.** Nếu một item dùng tên vùng không có trong `grid-template-areas`, trình duyệt tự tạo một ô ngầm ngoài lưới, và mọi item cùng dồn vào ô đó, chồng lên nhau.
+
+Phần `grid-template-columns` và `grid-template-areas` 2 cột cho máy tính viết ở BT3, trong media query. Nó sẽ ghi đè bố cục 1 cột ở trên.
 
 **Tự kiểm tra ở 375px:** 4 section xếp một cột, khoảng cách giữa chúng đều nhau và bằng `gap`.
 
