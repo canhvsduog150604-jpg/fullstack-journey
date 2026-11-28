@@ -86,6 +86,46 @@
     <section id="lien-he" class="khu-lien-he">
       <h2>Liên hệ</h2>
       <a href="https://github.com/canhvsduog150604-jpg">My Github</a>
+      <form class="form-lien-he">
+        <div class="truong">
+          <label for="ho-ten">Họ tên</label>
+          <input type="text" id="ho-ten" name="ho-ten" required minlength="2">
+        </div>
+        <div class="truong">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="truong">
+          <label for="so-dien-thoai">Số điện thoại</label>
+          <input type="tel" id="so-dien-thoai" name="so-dien-thoai" pattern="^\+?[1-9][0-9]{6,14}$">
+        </div>
+        <div class="truong">
+          <label for="chu-de">Chủ đề</label>
+          <select name="chu-de" id="chu-de" required>
+            <option value="">-- Chọn chủ đề --</option>
+            <option value="">Hợp tác dự án</option>
+            <option value="">Hỏi về bài học</option>
+            <option value="">Khác</option>
+          </select>
+        </div>
+        <div class="truong">
+          <label for="loi-nhan">Lời nhắn</label>
+          <textarea name="loi-nhan" id="loi-nhan" rows="5" required minlength="10" maxlength="500"></textarea>
+        </div>
+        <fieldset>
+            <legend>Liên hệ lại qua</legend>
+            <input type="radio" id="lai-email" name="lien-he-lai" value="email" checked>
+            <label for="lai-email">Email</label>
+
+            <input type="radio" id="lai-dien-thoai" name="lien-he-lai" value="dien-thoai">
+            <label for="lai-dien-thoai">Điện thoại</label>
+        </fieldset>
+        <div class="chon">
+          <input type="checkbox" name="ban-sao" id="ban-sao" value="co">
+          <label for="ban-sao">Gửi cho tôi một bản sao</label>
+        </div>
+        <button type="submit">Gửi lời nhắn</button>
+      </form>
     </section>
   </main>
 
