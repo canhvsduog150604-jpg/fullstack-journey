@@ -217,7 +217,7 @@ main {
 
 fieldset {
     border: 1px solid var(--mau-vien);
-    border-radius: 4px
+    border-radius: 4px;
 }
 
 .chon {

@@ -2,6 +2,7 @@ index.html?ho-ten=aa&email=asd%40gmail.com&so-dien-thoai=80703418&chu-de=&loi-nh
 
 1. 
 Có 7 cặp name=giá trị - Ô liên hệ lại = điện thoại không xuất hiện vì tôi đang chọn ô email rồi
+- Checkbox không tick thì không được gửi. Lần thử này bạn tick nên ban-sao=co mới xuất hiện. Thử lại mà không tick, cặp đó sẽ biến mất.
 
 2. 
 for của label phải trùng id của ô nhập vì nếu khác đi, khi click vào chữ nó sẽ không tự động chọn vào ô
