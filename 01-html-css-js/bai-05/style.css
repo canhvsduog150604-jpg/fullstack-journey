@@ -25,6 +25,9 @@ h1 {
     --mau-nhan: #c66f7c;
     --mau-galaxy: #00076f;
     --mau-hover: #fbaeb9;
+    --mau-loi: rgb(249, 24, 24);
+    --mau-vien: rgb(188, 191, 198);
+    --mau-khung: rgb(41, 154, 246); 
 }
 
 a {
@@ -179,3 +182,61 @@ main {
 /* ===== Bài 5: Form ===== */
 
 /* BT3. Style cho form */
+.form-lien-he {
+    display: grid;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.truong {
+    display: grid;
+    gap: 4px;
+}
+
+.truong input, .truong select, .truong textarea {
+    font: inherit;
+    width: 100%;
+    padding: 2px;
+    border: 1px solid var(--mau-vien);
+    border-radius: 4px;
+}
+
+.truong textarea {
+    resize: vertical; 
+    /* Chỉ kéo được chiều cao, không kéo vỡ khung theo chiều ngang */
+}
+
+.form-lien-he :focus-visible {
+    outline: 2px solid var(--mau-khung);
+    outline-offset: 2px;
+}
+
+.form-lien-he :user-invalid {
+    border-color: var(--mau-loi);
+}
+
+fieldset {
+    border: 1px solid var(--mau-vien);
+    border-radius: 4px
+}
+
+.chon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-lien-he button {
+    font: inherit;
+    background-color: var(--mau-galaxy);
+    color: var(--mau-nen);
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.form-lien-he button:hover {
+    background-color: var(--mau-hover);
+    color: var(--mau-chu);
+    cursor: pointer;
+}
